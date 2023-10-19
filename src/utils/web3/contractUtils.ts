@@ -1,4 +1,4 @@
-import { JsonRpcProvider, ethers } from 'ethers';
+import { JsonRpcProvider, Signer, ethers } from 'ethers';
 import contractAbi from '../abi/testCitizens.json';
 
 
@@ -46,19 +46,19 @@ export async function fetchNoteByCitizenId(citizenId: number) {
 
         return result;
     } catch (error) {
-        console.error('Ошибка вызова функции контракта:', error);
+        console.error('Error call contract function:', error);
     }
 
 }
 
-interface formData {
+type FormData = {
     name: string;
     age: number;
     city: string;
     note: string;
 }
 
-export async function createNewCitizen(formData: formData, signer: any) {
+export async function createNewCitizen(formData: FormData, signer: Signer) {
     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
 
     try {

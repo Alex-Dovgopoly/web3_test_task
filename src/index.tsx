@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import theme from './theme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './utils/mui/theme';
 import App from './App';
 import ConnectorProvider from './context/connector';
 

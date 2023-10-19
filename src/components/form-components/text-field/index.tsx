@@ -1,9 +1,10 @@
 import { TextField } from "@mui/material";
-import { Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
+import { IFormInput } from "../../form-add-citizen";
 
 interface FormInputProps {
-    name: string,
-    control: any,
+    name: any;
+    control: Control<IFormInput>;
     label: string,
 }
 

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Container, Fab, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from "react-router-dom";
 import { fetchContractLogs } from "../utils/web3/contractUtils";
 import CitizenList from "../components/citizen-list";
 import CircularLoader from "../components/circular-loader";
@@ -11,15 +11,15 @@ function MainPage() {
     const [citizenList, setCitizenList] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchCitizen();
-    }, []);
-
-    const fetchCitizen = async () => {
+    const fetchCitizen = useCallback(async () => {
         const request: any = await fetchContractLogs();
 
         setCitizenList(request);
-    }
+    }, []);
+
+    useEffect(() => {
+        fetchCitizen();
+    }, [fetchCitizen]);
 
     const handleRedirectAddCitizen = () => {
         navigate("/add-citizen");

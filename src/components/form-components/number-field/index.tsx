@@ -1,10 +1,11 @@
 import { TextField } from "@mui/material";
-import { Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
+import { IFormInput } from "../../form-add-citizen";
 
 interface FormInputProps {
-    name: string,
-    control: any,
-    label: string,
+    name: any;
+    control: Control<IFormInput>;
+    label: string;
 }
 
 function FormNumberField({ name, control, label }: FormInputProps) {
@@ -29,7 +30,7 @@ function FormNumberField({ name, control, label }: FormInputProps) {
                     fullWidth
                     label={label}
                     variant="outlined"
-                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', }}
                 />
             )}
         />
